@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :attorneys
   resources :referrals
   resources :imagings
   resources :treatments
