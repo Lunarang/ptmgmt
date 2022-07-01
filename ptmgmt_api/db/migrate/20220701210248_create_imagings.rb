@@ -8,7 +8,8 @@ class CreateImagings < ActiveRecord::Migration[6.1]
       t.integer :attempts_to_receive
       t.date :received
       t.string :areas
-
+      t.belongs_to :patient, index: true, foreign_key: true
+      
       t.timestamps
     end
   end

@@ -4,6 +4,7 @@ class CreateTreatments < ActiveRecord::Migration[6.1]
       t.date :start
       t.string :frequency
       t.string :therapy
+      t.belongs_to :patient, index: true, foreign_key: true
 
       t.timestamps
     end

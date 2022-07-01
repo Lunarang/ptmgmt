@@ -4,7 +4,8 @@ class CreateReferrals < ActiveRecord::Migration[6.1]
       t.date :sent
       t.string :facility
       t.text :reason
-
+      t.belongs_to :patient, index: true, foreign_key: true
+      
       t.timestamps
     end
   end

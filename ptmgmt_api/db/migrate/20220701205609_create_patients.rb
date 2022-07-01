@@ -6,10 +6,11 @@ class CreatePatients < ActiveRecord::Migration[6.1]
       t.string :sex
       t.date :dol
       t.date :initial
-      t.string :attorney
+      t.string :case_manager
       t.text :notes
       t.string :referred_by
       t.string :email
+      t.belongs_to :attorney, index: true, foreign_key: true
 
       t.timestamps
     end
