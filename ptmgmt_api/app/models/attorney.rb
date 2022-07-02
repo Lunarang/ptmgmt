@@ -1,4 +1,6 @@
 class Attorney < ApplicationRecord
     has_many :patients
-    validates :name, :address, :phone, :fax, presence: true, uniqueness: true
+    validates_presence_of :name, :address, :city, :state, :zip, :phone, :fax
+    validates :name, :address, :phone, :fax, uniqueness: true
+    validates :zip, length: { is: 5 }
 end
