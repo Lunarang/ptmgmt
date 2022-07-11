@@ -1,14 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
-import { configureStore } from "@reduxjs/toolkit";
+import App from "./common/App";
 import { Provider } from "react-redux";
+import { store } from './app/store'
+import "./style/styles.css"
 
-const store = configureStore({
-    reducer: {
-        // patients: ,
-    }
-});
 
 ReactDOM.render(
     <React.StrictMode>

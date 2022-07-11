@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./components/Home"
-import NewPatient from "./components/NewPatient"
-import Patient from "./components/Patient"
+import Home from "../common/Home"
+import NewPatient from "../features/patients/NewPatient"
+import Patient from "../features/patients/Patient"
 import NotFound from "./NotFound"
 
 const Views = () => {
