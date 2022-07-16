@@ -1,15 +1,15 @@
-import { Routes, Route } from "react-router-dom";
-import Home from "../common/Home"
-import NewPatient from "../features/patients/NewPatient"
-import Patient from "../features/patients/Patient"
-import NotFound from "./NotFound"
+import { Routes, Route } from 'react-router-dom'
+import Home from '../components/Home'
+import PatientForm from '../components/PatientForm'
+import Patient from '../components/Patient'
+import NotFound from './NotFound'
 
 const Views = () => {
     return (
         <Routes>
             <Route index element={<Home />} />
             <Route path="/patients">
-                <Route path="new" element={<NewPatient />}/>
+                <Route path="new" element={<PatientForm />}/>
                 <Route path=":id" element={<Patient />} />
                 <Route path="edit" element={<div>Edit Patient</div>} />
             </Route>
@@ -18,4 +18,4 @@ const Views = () => {
     )
 };
 
-export default Views;
+export default Views
