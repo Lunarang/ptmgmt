@@ -1,7 +1,7 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import Home from '../components/Home'
 import PatientForm from '../components/PatientForm'
-import Patient from '../components/Patient'
+import PatientWrapper from '../components/PatientWrapper'
 import NotFound from './NotFound'
 
 const Views = () => {
@@ -10,8 +10,8 @@ const Views = () => {
             <Route index element={<Home />} />
             <Route path="/patients">
                 <Route path="new" element={<PatientForm />}/>
-                <Route path=":id" element={<Patient />} />
-                <Route path="edit" element={<div>Edit Patient</div>} />
+                <Route path=":id" element={<PatientWrapper />} />
+                <Route path=":id/edit" element={<PatientForm />} />
             </Route>
             <Route path="*" element={<NotFound />} />
         </Routes>
