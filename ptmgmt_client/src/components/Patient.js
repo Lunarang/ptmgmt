@@ -1,17 +1,17 @@
-import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
-class Patient extends Component {
-  render() {
-    return (
-      <div>
-        Patient Profile
-        <Link to={`/patients/${this.props.id}/edit`} className="button muted-button">
-          Edit
-        </Link>
-      </div>
-    )
-  }
+function Patient() {
+  const id = useParams().id
+
+  return (
+    <div>
+      Patient Profile
+      <Link to={`/patients/${id}/edit`} className="button muted-button">
+        Edit
+      </Link>
+    </div>
+  )
 };
 
 export default Patient
