@@ -1,8 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
-import rootReducer from './reducers/rootReducer'
+import patientReducer from './reducers/patientReducer'
+import attorneyReducer from './reducers/attorneyReducer'
+
+const reducer = {
+  patients: patientReducer,
+  attorneys: attorneyReducer,
+};
 
 const store = configureStore({
-  reducer: rootReducer,
-})
+  reducer
+});
 
 export default store
