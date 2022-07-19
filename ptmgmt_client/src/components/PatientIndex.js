@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { selectAllPatients, fetchPatients } from '../reducers/patientReducer'
+import { useSelector } from 'react-redux'
+import { selectAllPatients } from '../reducers/patientReducer'
 import { Link } from 'react-router-dom'
 
 const PatientExcerpt = ({ patient }) => {
@@ -15,16 +14,9 @@ const PatientExcerpt = ({ patient }) => {
 };
 
 export const PatientIndex = () => {
-    const dispatch = useDispatch()
     const patients = useSelector(selectAllPatients)
     const patientStatus = useSelector(state => state.patients.status)
     const error = useSelector(state => state.patients.error)
-
-    useEffect(() => {
-      if (patientStatus === 'idle') {
-        dispatch(fetchPatients())
-      }
-    }, [patientStatus, dispatch])
 
     let content
 
