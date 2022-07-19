@@ -46,6 +46,6 @@ class PatientsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def patient_params
-      params.require(:patient).permit(:name, :dob, :sex, :dol, :initial, :attorney, :notes, :referred_by, :email)
+      params.require(:patient).permit(:first_name, :last_name, :dob, :sex, :dol, :initial, :attorney_id, :case_manager, :notes, :referred_by, :email)
     end
 end
