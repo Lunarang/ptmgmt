@@ -9,16 +9,20 @@ const patientReducer = (state = initialState, action) => {
     case 'ADD_PATIENT': {
       return {
         ...state, 
-        data: action.payload
+        data: [...state.data, action.payload]
       }
     }
     case 'EDIT_PATIENT': {
       return {
-      
+        ...state,
+        
       }
     }
     case 'DELETE_PATIENT': {
-      // return
+      return {
+        ...state,
+        
+      }
     }
     case 'FETCH_PATIENTS_PENDING': {
       return {
@@ -37,7 +41,7 @@ const patientReducer = (state = initialState, action) => {
       return {
         ...state,
         status: 'failed',
-        error: action.error.message
+        error: action.payload.error.message
       }
     }
     default:
@@ -61,22 +65,27 @@ export const fetchPatients =  () => async (dispatch) => {
 }
 
 // POST patient to API
-export const addPatient = patient => async (dispatch) => {
+export const addPatient = formData => async (dispatch) => {
   const response = await fetch('http://127.0.0.1:3001/patients', {
     method: 'POST',
-    body: JSON.stringify(patient),
-    headers: { 'Content-Type': 'application/json'}
+    headers: { 'Content-Type': 'application/json' },
+    // Format data to meet strong param standards
+    body: JSON.stringify({
+      patient: formData
+    })
   })
   const newPatient = await response.json()
   dispatch({ type: 'ADD_PATIENT', payload: newPatient })
 }
 
 // PATCH patient to API
-export const editPatient = (patient, patientId) => async (dispatch) => {
+export const editPatient = (formData, patientId) => async (dispatch) => {
   const response = await fetch(`http://127.0.0.1:3001/patients/${patientId}`, {
     method: 'PATCH',
-    body: JSON.stringify(patient),
-    headers: { 'Content-Type': 'application/json'}
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      patient: formData
+    })
   })
   const updatedPatient = await response.json()
   dispatch({ type: 'EDIT_PATIENT', payload: updatedPatient })
