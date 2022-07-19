@@ -1,21 +1,34 @@
 import React, { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { editPatient } from '../reducers/patientReducer'
 import PatientForm from './PatientForm'
 
 function PatientEdit() {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const patientId = useParams().id
-    const patientData = useSelector(state => state.patients.data[patientId])
-
+    const index = patientId - 1
+    const patientData = useSelector(state => state.patients.data[index])
+    
     const [formData, setFormData] = useState({
         first_name: '',
+        last_name: '',
+        dob: '',
+        sex: '',
+        email: '',
+        referred_by: '',
+        dol: '',
+        initial: '',
+        attorney_id: 0,
+        case_manager: '',
+        notes: ''
       })
 
     function handleSubmit(event) {
         event.preventDefault()
         dispatch(editPatient(formData, patientId))
+        navigate(`/patients/${patientId}`)
     }
 
     function handleChange(event) {
