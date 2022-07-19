@@ -1,18 +1,31 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { addPatient } from '../reducers/patientReducer'
 import PatientForm from './PatientForm'
 
 function PatientAdd() {
     const dispatch = useDispatch()
-    
+    const navigate = useNavigate()
+
     const [formData, setFormData] = useState({
         first_name: '',
+        last_name: '',
+        dob: '',
+        sex: '',
+        email: '',
+        referred_by: '',
+        dol: '',
+        initial: '',
+        attorney_id: 0,
+        case_manager: '',
+        notes: ''
       })
 
     function handleSubmit(event) {
         event.preventDefault()
         dispatch(addPatient(formData))
+        navigate('/')
     }
 
     function handleChange(event) {
