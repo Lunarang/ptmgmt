@@ -14,26 +14,26 @@ const PatientExcerpt = ({ patient }) => {
 };
 
 export const PatientIndex = () => {
-    const patients = useSelector(selectAllPatients)
-    const patientStatus = useSelector(state => state.patients.status)
-    const error = useSelector(state => state.patients.error)
+  const patients = useSelector(selectAllPatients)
 
-    let content
+  const content = patients.map(patient => (
+    <PatientExcerpt key={patient.id} patient={patient} />
+  ))
 
-    if (patientStatus === 'loading') {
-      content = <p>Loading...</p>
-    } else if (patientStatus === 'succeeded') {
-      content = patients.map(patient => (
-        <PatientExcerpt key={patient.id} patient={patient} />
-      ))
-    } else if (patientStatus === 'failed') {
-      content = <div>{error}</div>
-    }
-  
-    return (
-      <section className="patient-index">
-        <h2>Patients</h2>
-        {content}
-      </section>
-    )
+  // if (patientStatus === 'loading') {
+  //   content = <p>Loading...</p>
+  // } else if (patientStatus === 'succeeded') {
+  //   content = patients.map(patient => (
+  //     <PatientExcerpt key={patient.id} patient={patient} />
+  //   ))
+  // } else if (patientStatus === 'failed') {
+  //   content = <div>{error}</div>
+  // }
+
+  return (
+    <section className="patient-index">
+      <h2>Patients</h2>
+      {content}
+    </section>
+  )
 }
