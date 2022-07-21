@@ -25,7 +25,8 @@ function PatientAdd() {
     function handleSubmit(event) {
         event.preventDefault()
         dispatch(addPatient(formData))
-        navigate('/')
+        navigate('/', {replace: true})
+        // redirect to profile, but do not allow user to return to edit page with back button
     }
 
     function handleChange(event) {
