@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { selectPatientById } from '../reducers/patientReducer'
 
 function Patient() {
-  const id = useParams().id
-  const index = id - 1
-  const patient = useSelector(state => state.patients.data[index])
+  const id = parseInt(useParams().id)
+  const patient = useSelector(state => selectPatientById(state, id))
 
   return (
     <div>
