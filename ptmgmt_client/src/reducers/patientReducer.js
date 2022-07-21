@@ -13,9 +13,19 @@ const patientReducer = (state = initialState, action) => {
       }
     }
     case 'EDIT_PATIENT': {
-      return {
-        ...state,
-        
+      return { data: state.data.map((patient, index) => {
+          // find patient with the matching id
+          if(patient.id === action.payload.id) {
+            // Return a new object
+            return {
+              ...patient,  // copy existing patient
+              ...action.payload  // merge with new data, replacing old values
+            }
+          } else {
+            // return patient as is
+            return patient;
+          }
+        })
       }
     }
     case 'DELETE_PATIENT': {
@@ -53,8 +63,9 @@ export default patientReducer
 
 export const selectAllPatients = state => state.patients.data
 
-export const selectPatientById = (state, patientId) =>
-  state.patients.data.find(patient => patient.id === patientId)
+export const selectPatientById = (state, id) => 
+  state.patients.data.find(patient => patient.id === id)
+
 
 // GET patients from API
 export const fetchPatients =  () => async (dispatch) => {
@@ -79,8 +90,8 @@ export const addPatient = formData => async (dispatch) => {
 }
 
 // PATCH patient to API
-export const editPatient = (formData, patientId) => async (dispatch) => {
-  const response = await fetch(`http://127.0.0.1:3001/patients/${patientId}`, {
+export const editPatient = (formData, id) => async (dispatch) => {
+  const response = await fetch(`http://127.0.0.1:3001/patients/${id}`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
