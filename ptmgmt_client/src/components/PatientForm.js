@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 // info passed in as props from PatientAdd or PatientEdit
 function PatientForm(props) {
   // select all attorneys
-  const attorneys = useSelector(state => state.attorneys);
+  const attorneys = useSelector(state => state.attorneys.data);
   // iterate through attorneys
   const attorneyOptions = attorneys.map(attorney => (
     // return an option for each attorney
