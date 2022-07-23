@@ -8,24 +8,31 @@ import { fetchPatients } from '../reducers/patientReducer'
 import { fetchAttorneys } from '../reducers/attorneyReducer'
 
 function App() {
-    const dispatch = useDispatch()
-    const patientStatus = useSelector(state => state.patients.status)
-    
-    useEffect(() => {
-        if (patientStatus === 'idle') {
-          dispatch(fetchPatients())
-          dispatch(fetchAttorneys())
-        }
-      }, [patientStatus, dispatch]
-    )
+  const dispatch = useDispatch()
+  const patientStatus = useSelector(state => state.patients.status)
+  const attorneyStatus = useSelector(state => state.attorneys.status)
 
-    return (
-        <Router>
-            <Navbar />
-            <Views />
-            <Footer />
-        </Router>
-    );
+  useEffect(() => {
+      if (patientStatus === 'idle') {
+        dispatch(fetchPatients())
+      }
+    }, [patientStatus, dispatch]
+  );
+
+  useEffect(() => {
+      if (attorneyStatus === 'idle') {
+        dispatch(fetchAttorneys())
+      }
+    }, [attorneyStatus, dispatch]
+  );
+
+  return (
+      <Router>
+          <Navbar />
+          <Views />
+          <Footer />
+      </Router>
+  );
 };
 
-export default App;
+export default App
