@@ -13,7 +13,9 @@ const patientReducer = (state = initialState, action) => {
       }
     }
     case 'EDIT_PATIENT': {
-      return { data: state.data.map((patient, index) => {
+      return { 
+        ...state,
+        data: state.data.map((patient, index) => {
           // find patient with the matching id
           if(patient.id === action.payload.id) {
             // Return a new object
