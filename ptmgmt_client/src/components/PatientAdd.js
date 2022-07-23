@@ -26,7 +26,7 @@ function PatientAdd() {
         event.preventDefault()
         dispatch(addPatient(formData))
         navigate('/', {replace: true})
-        // redirect to profile, but do not allow user to return to edit page with back button
+        // redirect but do not allow user to return to edit page with back button
     }
 
     function handleChange(event) {
@@ -52,37 +52,5 @@ function PatientAdd() {
         </div>
     )
 };
-
-// class PatientAdd extends Component {
-//   state = {
-//     first_name: '',
-//   }
-
-//   handleSubmit = (event) => {
-//     // event.preventDefault()
-//     // this.sendFormData(this.state)
-//   }
-
-//   handleChange = (event) => {
-//     this.setState({
-//       [event.target.name]: event.target.value,
-//     })
-//   }
-  
-//   // Pass data from form up to parent component's state by 
-//   // passing down a function as a prop
-//   render() {
-//     return (
-//       <div>
-//         <h1>Add Patient</h1>
-//         <PatientForm 
-//             formData={this.state} 
-//             handleChange={this.handleChange} 
-//             handleSubmit={this.handleSubmit}
-//         />
-//       </div>
-//     )
-//   }
-// };
 
 export default PatientAdd
