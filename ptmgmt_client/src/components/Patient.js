@@ -17,7 +17,7 @@ function Patient() {
       
       Date of Loss: {patient.dol}
       Initial Visit: {patient.initial}
-      Attorney: {patient.attorney}
+      Attorney: {patient.attorney.name}
       Case Manager: {patient.case_manager}
       Notes: {patient.notes}
 
