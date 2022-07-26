@@ -1,9 +1,9 @@
-import { PatientIndex } from './PatientIndex'
+import PatientTable from './PatientTable'
 
 function Home() {
     return (
       <div>
-        <PatientIndex />
+        <PatientTable />
       </div>
     )
 };
