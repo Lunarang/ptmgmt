@@ -33,7 +33,9 @@ const patientReducer = (state = initialState, action) => {
     case 'DELETE_PATIENT': {
       return {
         ...state,
-        
+        data: state.data.filter((patient) => {
+          return patient.id !== action.payload
+        })
       }
     }
     case 'FETCH_PATIENTS_PENDING': {
@@ -63,11 +65,12 @@ const patientReducer = (state = initialState, action) => {
 
 export default patientReducer
 
+// Select all patients
 export const selectAllPatients = state => state.patients.data
 
+// Select Patient by ID
 export const selectPatientById = (state, id) => 
   state.patients.data.find(patient => patient.id === id)
-
 
 // GET patients from API
 export const fetchPatients =  () => async (dispatch) => {
@@ -102,4 +105,11 @@ export const editPatient = (formData, id) => async (dispatch) => {
   })
   const updatedPatient = await response.json()
   dispatch({ type: 'EDIT_PATIENT', payload: updatedPatient })
+}
+  
+// DELETE patient from API database
+export const deletePatient = (id) => async (dispatch) => {
+  // const response = await fetch(`http://127.0.0.1:3001/patients/${id}`, {method: 'DELETE'})
+  // const confirmation = await response.json()
+  dispatch({ type: 'DELETE_PATIENT', payload: id })
 }
