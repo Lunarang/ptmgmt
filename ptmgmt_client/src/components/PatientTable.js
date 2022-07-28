@@ -14,9 +14,11 @@ const PatientTable = () => {
 
     const [search, setSearch] = useState({
         query: '',
-        searchBy: 'Name'
+        searchBy: 'Name',
     });
 
+    let data = { nodes: patients };
+    
     const handleSearch = (event) => {
         const name = event.target.name
         let value = event.target.value
@@ -27,17 +29,20 @@ const PatientTable = () => {
         })
     };
 
-    let data = { nodes: patients };
-
     switch(search.searchBy) {
         case 'Date of Birth':
             data = {
                 nodes: patients.filter((patient) =>
-                patient.attorney.name.toLowerCase().includes(search.query.toLowerCase())
+                patient.dob.includes(search.query)
                 ),
             };
             break;
         case 'Initial Visit':
+            data = {
+                nodes: patients.filter((patient) =>
+                patient.dob.includes(search.query)
+                ),
+            };
             break;
         case 'Attorney':
             data = {
@@ -81,7 +86,12 @@ const PatientTable = () => {
             </label>
             <label>
                 Patient Lookup
-                <input name="query" type="text" value={search.query} onChange={handleSearch} />
+                <input 
+                    name="query" 
+                    type="text" 
+                    placeholder="type here..."
+                    value={search.query} 
+                    onChange={handleSearch} />
             </label>
             <br />
 
