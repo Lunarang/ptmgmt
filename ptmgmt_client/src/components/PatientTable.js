@@ -1,6 +1,6 @@
 import { CompactTable } from '@table-library/react-table-library/compact'
-import { useTheme } from '@table-library/react-table-library/theme'
-import { getTheme } from '@table-library/react-table-library/baseline'
+import { useTheme } from '@table-library/react-table-library/theme';
+import { getTheme } from '@table-library/react-table-library/baseline';
 
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
@@ -18,7 +18,8 @@ const PatientTable = () => {
     });
 
     let data = { nodes: patients };
-    
+    let placeholder = 'Patient Name'
+
     const handleSearch = (event) => {
         const name = event.target.name
         let value = event.target.value
@@ -31,6 +32,7 @@ const PatientTable = () => {
 
     switch(search.searchBy) {
         case 'Date of Birth':
+            placeholder = 'mm/dd/yyyy'
             data = {
                 nodes: patients.filter((patient) =>
                 patient.dob.includes(search.query)
@@ -38,6 +40,7 @@ const PatientTable = () => {
             };
             break;
         case 'Initial Visit':
+            placeholder = 'mm/dd/yyyy'
             data = {
                 nodes: patients.filter((patient) =>
                 patient.dob.includes(search.query)
@@ -45,6 +48,7 @@ const PatientTable = () => {
             };
             break;
         case 'Attorney':
+            placeholder = 'Attorney Name'
             data = {
                 nodes: patients.filter((patient) =>
                 patient.attorney.name.toLowerCase().includes(search.query.toLowerCase())
@@ -52,9 +56,10 @@ const PatientTable = () => {
             };
             break;
         default:
+            placeholder = 'Patient Name'
             data = {
                 nodes: patients.filter((patient) =>
-                patient.first_name.toLowerCase().includes(search.query.toLowerCase())
+                patient.first_name.toLowerCase().includes(search.query.toLowerCase()) || patient.last_name.toLowerCase().includes(search.query.toLowerCase())
                 ),
             };
     }
@@ -75,24 +80,24 @@ const PatientTable = () => {
 
     return (
         <div>
-            <label>
-                Search by 
-                <select name="searchBy" value={search.searchBy} onChange={handleSearch} >
-                    <option value="Name">Name</option>
-                    <option value="Date of Birth">Date of Birth</option>
-                    <option value="Initial Visit">Initial Visit</option>
-                    <option value="Attorney">Attorney</option>
-                </select>
-            </label>
-            <label>
-                Patient Lookup
-                <input 
-                    name="query" 
-                    type="text" 
-                    placeholder="type here..."
-                    value={search.query} 
-                    onChange={handleSearch} />
-            </label>
+            <div className="search">
+                <h1>Patient Lookup</h1>
+                <label>
+                    Search by 
+                    <select name="searchBy" value={search.searchBy} onChange={handleSearch} >
+                        <option value="Name">Name</option>
+                        <option value="Date of Birth">Date of Birth</option>
+                        <option value="Initial Visit">Initial Visit</option>
+                        <option value="Attorney">Attorney</option>
+                    </select>
+                    <input 
+                        name="query" 
+                        type="text" 
+                        placeholder={placeholder}
+                        value={search.query} 
+                        onChange={handleSearch} />
+                </label>
+            </div>
             <br />
 
             <CompactTable columns={COLUMNS} data={data} theme={theme} />

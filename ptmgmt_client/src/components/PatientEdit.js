@@ -11,8 +11,6 @@ function PatientEdit() {
 
     // find patient with the matching id
     const patientData = useSelector(state => selectPatientById(state, id))
-    // const index = patientId - 1
-    // const patientData = useSelector(state => state.patients.data[index])
     
     const [formData, setFormData] = useState({
         first_name: patientData.first_name,
@@ -48,13 +46,13 @@ function PatientEdit() {
     // Pass data from form up to parent component's state by 
     // passing down a function as a prop
     return (
-        <div>
-        <h1>Edit Patient</h1>
-        <PatientForm 
-            formData={formData} 
-            handleChange={handleChange} 
-            handleSubmit={handleSubmit}
-        />
+        <div class="main">
+            <h1>Edit Patient</h1>
+            <PatientForm 
+                formData={formData} 
+                handleChange={handleChange} 
+                handleSubmit={handleSubmit}
+            />
         </div>
     )
 };

@@ -7,12 +7,12 @@ body {
 }
 
 .nav {
-    background-color: #333;
+    background-color: #e28047;
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 1rem;
+    padding: 15px;
 }
 
 .nav a {
@@ -36,3 +36,131 @@ body {
     bottom: 0;
     right: 0;
 }
+
+.main {
+    margin: auto;
+    width: 90%;
+    padding: 2%;
+}
+
+h1 {
+    color: #44C3EB;
+    text-align: center;
+}
+
+a {
+    color: #44C3EB;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #e28047;
+}
+
+button {
+    background-color: #44C3EB;
+    border: none;
+    color: white;
+    padding: 6px 10px;
+    margin: 10px;
+    border-radius: 10px;
+    text-align: center;
+    transition: .3s background_color;
+}
+
+.muted-btn {
+    background-color: white;
+    color: #a0897e;
+    transition: .3s color;
+}
+
+.muted-btn:hover {
+    background-color: white;
+    color: #e28047;
+}
+
+.remove-btn {
+    background-color: white;
+    color: #e28047;
+    transition: .3s color;
+}
+
+.remove-btn:hover {
+    background-color: white;
+    color: #aa1212;
+}
+
+button:hover {
+    background-color: #e28047;
+}
+
+.search {
+    margin: auto;
+    width: 30%;
+    text-align: center;
+}
+
+form {
+    width: 60%;
+    margin: auto;
+    padding: 3%;
+    background-color: #EDE7E4;
+    border-radius: 20px;
+}
+
+.card {
+    width: 60%;
+    margin: 20px auto;
+    padding: 8px 10px 30px 30px;
+    background-color: #EDE7E4;
+    border-radius: 20px;
+}
+
+.info {
+    width: 60%;
+    margin: 20px auto;
+    padding: 8px 10px 30px 30px;
+}
+
+input[type] {
+    border: 1px solid #44C3EB;
+    border-radius: 6px;
+    padding: 6px;
+    margin: 5px 0 20px;
+    width: 100%;
+    box-shadow:4px 4px 10px rgba(0,0,0,0.06);
+}
+
+textarea {
+    resize: vertical;
+    box-shadow:4px 4px 10px rgba(0,0,0,0.06);
+    height:150px;
+    border: 1px solid #44C3EB;
+    border-radius: 6px;
+    padding: 6px;
+    margin: 5px 0 20px;
+    width: 100%;
+}
+
+input[type=radio] {
+    width:20px; 
+    height:20px;
+    background-color: #ddd;
+    padding: 6px;
+    margin: 5px 5px 20px 20px;
+}
+
+select {
+    border: 1px solid #44C3EB;
+    border-radius: 6px;
+    padding: 6px;
+    margin: 5px auto 20px;
+    width: 100%;
+    box-shadow:4px 4px 10px rgba(0,0,0,0.06);
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

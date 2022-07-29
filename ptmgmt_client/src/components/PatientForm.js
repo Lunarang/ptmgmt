@@ -22,7 +22,7 @@ function PatientForm(props) {
           value={props.formData.first_name}
           required
           />
-        </label>
+        </label><br/>
         <label>
           Last Name:
           <input 
@@ -32,60 +32,69 @@ function PatientForm(props) {
           value={props.formData.last_name}
           required
           />
-        </label>
+        </label><br/>
         <label>
           Email:
           <input 
-          type="text" 
+          type="email" 
           name="email" 
           onChange={event => props.handleChange(event)} 
           value={props.formData.email}
           required
           />
-        </label>
+        </label><br/>
         <label>
           Date of Birth:
           <input 
-          type="text" 
+          type="date" 
           name="dob" 
           onChange={event => props.handleChange(event)} 
           value={props.formData.dob}
           placeholder="YYYY-MM-DD"
           required
           />
-        </label>
+        </label><br/>
         <label>
-          Sex:
+          Sex:<br/>
           <input 
-          type="text" 
+          type="radio" 
           name="sex" 
           onChange={event => props.handleChange(event)} 
-          value={props.formData.sex}
+          value="M"
+          checked={props.formData.sex.toLowerCase() === "m"}
           required
-          />
-        </label>
+          /> Male
+          <input 
+          type="radio" 
+          name="sex" 
+          onChange={event => props.handleChange(event)} 
+          value="F"
+          checked={props.formData.sex.toLowerCase() === "f"}
+          required
+          /> Female
+        </label><br/>
         <label>
           Date of Loss:
           <input 
-          type="text" 
+          type="date" 
           name="dol" 
           onChange={event => props.handleChange(event)} 
           value={props.formData.dol}
           placeholder="YYYY-MM-DD"
           required
           />
-        </label>
+        </label><br/>
         <label>
           Date of Initial Encounter:
           <input 
-          type="text" 
+          type="date" 
           name="initial" 
           onChange={event => props.handleChange(event)} 
           value={props.formData.initial}
           placeholder="YYYY-MM-DD"
           required
           />
-        </label>
+        </label><br/>
         <label>
           Attorney:
           <select 
@@ -95,7 +104,7 @@ function PatientForm(props) {
           required >
             {attorneyOptions}
           </select>
-        </label>
+        </label><br/>
         <label>
           Case Manager:
           <input 
@@ -104,7 +113,7 @@ function PatientForm(props) {
           onChange={event => props.handleChange(event)} 
           value={props.formData.case_manager || ''}
           />
-        </label>
+        </label><br/>
         <label>
           Referred By:
           <input 
@@ -113,7 +122,7 @@ function PatientForm(props) {
           onChange={event => props.handleChange(event)} 
           value={props.formData.referred_by || ''}
           />
-        </label>
+        </label><br/>
         <label>
           Notes:
           <textarea
@@ -122,8 +131,10 @@ function PatientForm(props) {
           onChange={event => props.handleChange(event)} 
           value={props.formData.notes || ''}
           />
-        </label>
-        <button type="submit">Submit</button>
+        </label><br/>
+        <div class="center">
+          <button type="submit">Submit</button>
+        </div>
       </form>
     </div>
   )

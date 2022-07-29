@@ -46,6 +46,6 @@ class TreatmentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def treatment_params
-      params.require(:treatment).permit(:start, :frequency, :therapy)
+      params.require(:treatment).permit(:start, :frequency, :therapy, :patient_id)
     end
 end

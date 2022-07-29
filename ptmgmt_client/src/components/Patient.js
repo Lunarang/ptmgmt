@@ -4,8 +4,7 @@ import { selectPatientById } from '../reducers/patientReducer'
 import formatDate from '../style/dateFormatter'
 import DeletePatient from './DeletePatient'
 import Treatments from './Treatments'
-// import Imagings from './Imagings'
-// import Referrals from './Referrals'
+import Imagings from './Imagings'
 
 function Patient() {
   const id = parseInt(useParams().id)
@@ -13,35 +12,37 @@ function Patient() {
   const navigate = useNavigate()
 
   return (
-    <div>
-      <h3>Patient Information</h3>
-      <h2>{patient.first_name} {patient.last_name}</h2>
-      Date of Birth: {formatDate(patient.dob)}<br/>
-      Sex: {patient.sex.toUpperCase()}<br/>
-      Email: {patient.email}<br/>
-      Referred By: {patient.referred_by}<br/>
-      
-      Date of Loss: {formatDate(patient.dol)}<br/>
-      Initial Visit: {formatDate(patient.initial)}<br/>
-      Attorney: {patient.attorney.name}<br/>
-      Case Manager: {patient.case_manager}<br/>
-      Notes: {patient.notes}<br/>
-
-      <br/>
-      <button onClick={() => navigate(`/attorneys/${patient.attorney_id}`)} >View Attorney</button>
-      <button onClick={() => navigate(`/patients/${patient.attorney_id}/edit`)} >Edit</button>
+    <div className="main">
+      <h1>Patient Information</h1>
+      <div className="card">
+        <h2>{patient.first_name} {patient.last_name}</h2>
+        <b>Date of Birth:</b> {formatDate(patient.dob)}<br/>
+        <b>Sex:</b> {patient.sex.toUpperCase()}<br/>
+        <b>Email:</b> {patient.email}<br/>
+        <b>Referred By:</b> {patient.referred_by}<br/>
+        
+        <b>Date of Loss:</b> {formatDate(patient.dol)}<br/>
+        <b>Initial Visit:</b> {formatDate(patient.initial)}<br/>
+        <b>Attorney:</b> {patient.attorney.name}<br/>
+        <b>Case Manager:</b> {patient.case_manager}<br/>
+        <b>Notes:</b> {patient.notes}<br/>
+        <br/>
+        <button className="muted-btn" onClick={() => navigate(`/patients/${patient.id}/edit`)} >Edit</button>
+        <div className="center">
+          <button align="left" onClick={() => navigate(`/attorneys/${patient.attorney_id}`)} >View Attorney</button>
+        </div>
+      </div>
 
       <h3>Treatment Plan</h3>
-      <Treatments />
+      <Treatments patient={patient} />
 
       <h3>Imaging</h3>
-      {/* <Imagings patient={patient} /> */}
-
-      <h3>Referrals</h3>
-      {/* <Referrals patient={patient} /> */}
+      <Imagings patient={patient} />
 
       <br/>
-      <DeletePatient id={id} />
+      <div className="center">
+        <DeletePatient id={id} />
+      </div>
     </div>
   )
 };

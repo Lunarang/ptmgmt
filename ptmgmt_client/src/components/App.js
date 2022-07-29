@@ -6,6 +6,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchPatients } from '../reducers/patientReducer'
 import { fetchAttorneys } from '../reducers/attorneyReducer'
+import { fetchTreatments } from '../reducers/treatmentReducer'
 
 function App() {
   const dispatch = useDispatch()
@@ -25,6 +26,14 @@ function App() {
       }
     }, [attorneyStatus, dispatch]
   );
+
+  useEffect(() => {
+    dispatch(fetchTreatments())
+  }, [dispatch]);
+
+  // useEffect(() => {
+  //   dispatch()
+  // }, []);
 
   return (
       <Router>

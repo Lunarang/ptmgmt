@@ -1,41 +1,37 @@
 import { CompactTable } from '@table-library/react-table-library/compact'
+import { useTheme } from '@table-library/react-table-library/theme';
+import { getTheme } from '@table-library/react-table-library/baseline';
+
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { addTreatment, editTreatment, deleteTreatment, selectAllTreatments } from '../reducers/treatmentReducer'
 
-function Treatments() {
-    const test = [
-        { id: 1,
-            start: "2022-05-23",
-            frequency: "2x/wk for 3wks",
-            therapy: "2msg/adj"
-        },
-        { id: 2,
-            start: "2022-05-23",
-            frequency: "2x/wk for 3wks",
-            therapy: "2msg/adj"
-        },
-        { id: 3,
-            start: "2022-05-23",
-            frequency: "2x/wk for 3wks",
-            therapy: "2msg/adj"
-        },
-    ]
+function Treatments(props) {
+    const allTreatments = useSelector(selectAllTreatments)
+    const dispatch = useDispatch()
+    const theme = useTheme(getTheme());
 
-    const [treatments, setTreatments] = useState({nodes: test});
+    const data = allTreatments.filter((treatment) => {
+        return treatment.patient_id === props.patient.id;
+        })
+
+    const [treatments, setTreatments] = useState({nodes: data});
 
     const handleAddition = () => {
         const newRow = { 
-                id: treatments.nodes[treatments.nodes.length - 1].id+1,
+                id: treatments.nodes.length+1,
                 start: new Date().toISOString().substr(0, 10),
                 frequency: '',
-                therapy: ''
+                therapy: '',
+                patient_id: props.patient.id
             }
-        console.log(newRow)
         setTreatments({
             ...treatments,
             nodes: [...treatments.nodes, newRow]
         });
     }
 
+    // Delete
     const handleRemoval = (id) => {
         setTreatments({
             ...treatments,
@@ -43,6 +39,8 @@ function Treatments() {
               return treatment.id !== id;
             })
         });
+        // delete from database as well
+        if (data.some(e => e.id === id)) { dispatch(deleteTreatment(id)) }
     }
 
     const handleUpdate = (value, id, property) => {
@@ -66,8 +64,18 @@ function Treatments() {
         }
     }
 
+    // Add, Edit
     const handleSave = () => {
-
+        for (const treatment of treatments.nodes) {
+            // if treatment not in data - add
+            if (!data.some(e => e.id === treatment.id)) {
+                dispatch(addTreatment(treatment))
+            // if treatment in data, but differs - edit
+            } else if (data.some(e => e.id === treatment.id) === true && treatment !== data.find(e => e.id === treatment.id)) {
+                dispatch(editTreatment(treatment, treatment.id))
+            }
+        }
+        alert("Changes Saved!")
     }
 
     const COLUMNS = [
@@ -104,15 +112,15 @@ function Treatments() {
                 />
             ), 
         },
-        { label: '', renderCell: (treatment) => <button onClick={() => handleRemoval(treatment.id)} >Remove</button> },
+        { label: '', renderCell: (treatment) => <button className="remove-btn" onClick={() => handleRemoval(treatment.id)} >Remove</button> },
     ];
 
     return (
         <div>
-            <CompactTable columns={COLUMNS} data={treatments} />
+            <CompactTable columns={COLUMNS} data={treatments} theme={theme} />
             <button onClick={() => handleAddition()} >Add</button>
             <br/>
-            <button style={{display: test !== treatments.nodes ? 'block' : 'none'}} onClick={() => handleSave()}>Save Changes</button>
+            <button class="save" style={{display: data !== treatments.nodes ? 'block' : 'none'}} onClick={() => handleSave()}>Save Changes</button>
         </div>
     );
 };

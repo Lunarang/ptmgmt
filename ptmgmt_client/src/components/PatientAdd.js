@@ -42,7 +42,7 @@ function PatientAdd() {
     // Pass data from form up to parent component's state by 
     // passing down a function as a prop
     return (
-        <div>
+        <div class="main">
         <h1>Add Patient</h1>
         <PatientForm 
             formData={formData} 
