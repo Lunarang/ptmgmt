@@ -120,7 +120,7 @@ function Treatments(props) {
             <CompactTable columns={COLUMNS} data={treatments} theme={theme} />
             <button onClick={() => handleAddition()} >Add</button>
             <br/>
-            <button class="save" style={{display: data !== treatments.nodes ? 'block' : 'none'}} onClick={() => handleSave()}>Save Changes</button>
+            <button className="save" style={{display: data !== treatments.nodes ? 'block' : 'none'}} onClick={() => handleSave()}>Save Changes</button>
         </div>
     );
 };
