@@ -5,6 +5,7 @@ import formatDate from '../style/dateFormatter'
 import DeletePatient from './DeletePatient'
 import Treatments from './Treatments'
 import Imagings from './Imagings'
+import Referrals from './Referrals'
 
 function Patient() {
   const id = parseInt(useParams().id)
@@ -39,6 +40,9 @@ function Patient() {
       <h3>Imaging</h3>
       <Imagings patient={patient} />
 
+      <h3>Referrals</h3>
+      <Referrals patient={patient} />
+      
       <br/>
       <div className="center">
         <DeletePatient id={id} />
