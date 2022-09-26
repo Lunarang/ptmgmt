@@ -27,6 +27,7 @@ function Imagings(props) {
                 attempts_to_receive: 0,
                 received: new Date().toISOString().substr(0, 10),
                 areas: '',
+                method: '',
                 patient_id: props.patient.id
             }
         setImagings({
@@ -156,6 +157,17 @@ function Imagings(props) {
                 style={{ width: '100%', border: 'none', fontSize: '1rem', padding: 0, margin: 0 }}
                 value={imaging.areas}
                 onChange={(event) => handleUpdate(event.target.value, imaging.id, 'areas')}
+                />
+            ), 
+        },
+        { 
+            label: 'Method', 
+            renderCell:  (imaging) => (
+                <input
+                type="text"
+                style={{ width: '100%', border: 'none', fontSize: '1rem', padding: 0, margin: 0 }}
+                value={imaging.method}
+                onChange={(event) => handleUpdate(event.target.value, imaging.id, 'method')}
                 />
             ), 
         },
