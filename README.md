@@ -7,9 +7,9 @@ PTMGMT (Patient Management) is an SPA designed as a lightweight personal injury 
 ### Clone the repository
 
 ```shell
-git clone git@github.com:Lunarang/Stretchwork.git
-cd stretchwork
-cd backend
+git clone git@github.com:Lunarang/ptmgmt.git
+cd ptmgmt
+cd ptmgmt_api
 ```
 
 ### Check your Ruby version
