@@ -4,34 +4,26 @@ PTMGMT (Patient Management) is an SPA designed as a lightweight personal injury 
 
 ## Install
 
+### Prerequesites
+Before you begin, ensure you have met the following requirements:
+
+You have installed `ruby 2.6.1` or higher.
+You have a Linux or WSL environment.
+
 ### Clone the repository
 
 ```shell
 git clone git@github.com:Lunarang/ptmgmt.git
 cd ptmgmt
+```
+
+### Install dependencies (backend)
+
+Using [Bundler](https://github.com/bundler/bundler):
+
+```shell
 cd ptmgmt_api
-```
-
-### Check your Ruby version
-
-```shell
-ruby -v
-```
-
-The ouput should start with something like `ruby 2.6.1`
-
-If not, install the right ruby version using [rbenv](https://github.com/rbenv/rbenv) (it could take a while):
-
-```shell
-rbenv install 2.6.1
-```
-
-### Install dependencies
-
-Using [Bundler](https://github.com/bundler/bundler) and [Yarn](https://github.com/yarnpkg/yarn):
-
-```shell
-bundle && yarn
+bundle install
 ```
 
 ### Initialize the database
@@ -40,18 +32,36 @@ bundle && yarn
 rails db:create db:migrate db:seed
 ```
 
-## Serve
+### Install dependencies (frontend)
 
-```shell
-rails s
-```
-
-Then navigate to the frontend directory to open 'index.html' to start using the app!
+Using [NPM](https://github.com/npm):
 
 ```shell
 cd ..
-cd frontend
+cd ptmgmt_client
+npm install
 ```
+
+## Serve
+
+Note: to run this on your local machine, you will have to set the api server to a separate port from the npm server.
+This can be accomplished with the following command, which sets the port to 3001 rather than the default 3000:
+
+```shell
+cd ..
+cd ptmgmt_api
+rails s -p 3001
+```
+
+Then navigate to the frontend directory to start the npm server (this will automatically occupy port 3000):
+
+```shell
+cd ..
+cd ptmgmt_client
+npm start
+```
+
+Then navigate to your [local host](http://localhost:3000/) to start using the app!
 
 ## Architecture and Models
 
