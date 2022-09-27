@@ -7,8 +7,8 @@ PTMGMT (Patient Management) is an SPA designed as a lightweight personal injury 
 ### Prerequesites
 Before you begin, ensure you have met the following requirements:
 
-You have installed `ruby 2.6.1` or higher.
-You have a Linux or WSL environment.
+* You have installed `ruby 2.6.1` or higher.
+* You have a Linux or WSL environment.
 
 ### Clone the repository
 
