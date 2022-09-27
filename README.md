@@ -65,17 +65,14 @@ Then navigate to your [local host](http://localhost:3000/) to start using the ap
 
 ## Architecture and Models
 
-Stretchwork follows basic MVC architecture and RESTful controller conventions.
+PTMGMT follows basic MVC architecture and RESTful controller conventions.
 Models and associations are as follows:
 
-* Routine - has_and_belongs_to_many :muscles
-    has_many :stretches, through: :muscles
-* Muscle - has_many :stretches
-    has_and_belongs_to_many :routines
-* Stretch - belongs_to :muscle
-
-Contributing to <project_name>
-To contribute to <project_name>, follow these steps:
+* <b>Attorney</b> `has_many` patients
+* <b>Patient</b> `belongs_to` attorney, `has_many` treatments, imagings, and referrals
+* <b>Treatment</b> `belongs_to` patient
+* <b>Imaging</b> `belongs_to` patient
+* <b>Referral</b> `belongs_to` patient
 
 ## Contributing to PTMGMT
 To contribute to PTMGMT, follow these steps:
