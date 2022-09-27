@@ -2,10 +2,10 @@
 
 PTMGMT (Patient Management) is an SPA designed as a lightweight personal injury patient tracker in a chiropractic work environment. It's goal is to give the user a straightforward, birds-eye view of their patient's basic information, attorney contact, treatment plan, imaging timeline, and referral reference. All without trying to navigate multiple windows, cluttered menus, and ambiguously named documents that typically plagues software designed for a medical environment. Think of it as a summary of a patient's care plan and care history. The frontend is built with React and Redux libraries, and it communicates with a backend API built with Ruby on Rails.
 
-<b>Curious about this project?</b>
-:eyes: Watch the video [demo]()
+<b>Curious about this project?</b>  
+:eyes: Watch the video [demo]()  
 :books: Read about the process on my [blog](https://codebaby.hashnode.dev/my-first-reactredux-project-ptmgmt)  
-:art: Checkout my wireframes on [Figma](https://www.figma.com/file/mesAN7jHePHl5Zr4BnMIsx/PTMGMT?node-id=0%3A1)
+:art: Checkout my wireframes on [Figma](https://www.figma.com/file/mesAN7jHePHl5Zr4BnMIsx/PTMGMT?node-id=0%3A1)  
 
 ## Install :sparkles:
 
