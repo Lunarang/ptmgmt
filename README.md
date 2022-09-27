@@ -17,7 +17,7 @@ git clone git@github.com:Lunarang/ptmgmt.git
 cd ptmgmt
 ```
 
-### Install dependencies (backend)
+### Install api dependencies
 
 Using [Bundler](https://github.com/bundler/bundler):
 
@@ -32,7 +32,7 @@ bundle install
 rails db:create db:migrate db:seed
 ```
 
-### Install dependencies (frontend)
+### Install client dependencies
 
 Using [NPM](https://github.com/npm):
 
@@ -73,3 +73,17 @@ Models and associations are as follows:
 * Muscle - has_many :stretches
     has_and_belongs_to_many :routines
 * Stretch - belongs_to :muscle
+
+Contributing to <project_name>
+To contribute to <project_name>, follow these steps:
+
+## Contributing to PTMGMT
+To contribute to PTMGMT, follow these steps:
+
+1. Fork this repository.
+2. Create a branch: `git checkout -b <branch_name>`.
+3. Make your changes and commit them: `git commit -m '<commit_message>'`
+4. Push to the original branch: `git push origin <project_name>/<location>`
+5. Create the pull request.
+
+Alternatively see the GitHub documentation on [creating a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
