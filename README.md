@@ -5,7 +5,7 @@ PTMGMT (Patient Management) is an SPA designed as a lightweight personal injury 
 </br>
 <b>Curious about this project?</b>  
 
-:eyes: Watch the video [demo]()  
+:eyes: Watch the video [demo](https://www.loom.com/share/0ec148f01eae4526a5886a6d044d2cf3)  
 :books: Read about the process on my [blog](https://codebaby.hashnode.dev/my-first-reactredux-project-ptmgmt)  
 :art: Checkout my wireframes on [Figma](https://www.figma.com/file/mesAN7jHePHl5Zr4BnMIsx/PTMGMT?node-id=0%3A1)  
 
